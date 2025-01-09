@@ -12,6 +12,14 @@ $(document).ready(function () {
         });
     });
 });
+
+const { app } = require('electron');
+
+app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
+// 忽略证书验证错误
+event.preventDefault();
+callback(true);
+});
 /*
 function getCurrentDateTime() {
     const now = new Date();
